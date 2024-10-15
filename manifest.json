@@ -1,0 +1,93 @@
+{
+  "manifest_version": 3,
+  "name": "null",
+  "short_name": "null",
+  "description": "null",
+  "version": "0.0.1",
+  "icons": {
+
+  },
+  "action": {
+    "default_icon": {
+
+    },
+    "default_TItle": "null"
+  },
+  "permissions": [
+    "activeTab",
+    "notifications",
+    "offscreen",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "*://*.schoology.com/*"
+  ],
+  "optional_host_permissions": [
+    "<all_urls>"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/*"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "background": {
+    "service_worker": "js/worker.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.schoology.com/api"
+      ],
+      "exclude_matches": [
+        "*://asset-cdn.schoology.com/*",
+        "*://developer.schoology.com/*",
+        "*://support.schoology.com/*",
+        "*://info.schoology.com/*",
+        "*://files-cdn.schoology.com/*",
+        "*://status.schoology.com/*",
+        "*://ui.schoology.com/*",
+        "*://www.schoology.com/*",
+        "*://api.schoology.com/*",
+        "*://developers.schoology.com/*",
+        "*://schoology.com/*",
+        "*://lti-submission-google.app.schoology.com/*"
+      ],
+      "css": [
+
+      ],
+      "js": [
+        "js/apiSetUp.js"
+      ],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "https://*.schoology.com/*"
+      ],
+      "exclude_matches": [
+        "*://asset-cdn.schoology.com/*",
+        "*://developer.schoology.com/*",
+        "*://support.schoology.com/*",
+        "*://info.schoology.com/*",
+        "*://files-cdn.schoology.com/*",
+        "*://status.schoology.com/*",
+        "*://ui.schoology.com/*",
+        "*://www.schoology.com/*",
+        "*://api.schoology.com/*",
+        "*://developers.schoology.com/*",
+        "*://schoology.com/*",
+        "*://lti-submission-google.app.schoology.com/*"
+      ],
+      "css": [],
+      "js": [
+        "js/preload.js"
+      ],
+      "run_at": "document_start"
+    }
+  ]
+}
